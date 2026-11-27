@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Cairo FONT-->
+     <link href="https://fonts.googleapis.com/css?family=Cairo:200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+<body>
+    <h1></h1>
+    <div class="guess-game">
+        <div class="game-area">
+            <button class="reset-game" type="button" aria-label="Reset game" title="Reset game">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 11a8 8 0 0 0-14.9-3L3 11"></path>
+                    <path d="M3 5v6h6"></path>
+                    <path d="M4 13a8 8 0 0 0 14.9 3L21 13"></path>
+                    <path d="M21 19v-6h-6"></path>
+                </svg>
+            </button>
+            <div class="inputs"></div>
+            <div class="control">
+                <button class="check">Check Word</button>
+                <button class="hints"> <span></span> Hint </button>
+            </div>
+            <div class="message"></div>
+        </div>
+        <div class="key-colors">
+            <h2>Key Colors</h2>
+            <div class="key-color">
+                <div class="key in-place"></div>
+                <div class="key-text">Letter Is Correct And In Place</div>
+            </div>
+            <div class="key-color">
+                <div class="key not-in-place"></div>
+                <div class="key-text">Letter Is Correct But Not In Place</div>
+            </div>
+            <div class="key-color">
+                <div class="key no"></div>
+                <div class="key-text">Letter Is Wrong And Not Exists In Word</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <span id="footerNote"> Created By Youssef Mostafa</span>
+    </footer>
+   <script src="main.js"></script> 
+</body>
+</html>

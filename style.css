@@ -1,0 +1,303 @@
+* {
+    box-sizing: border-box; 
+}
+
+:root {
+    --primary-color: #f44336;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EEE;
+    font-family: 'Cairo', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 0 0 50px;
+    background-color: white;
+}
+
+
+.guess-game {
+    text-align: center;
+    width: min(1000px, calc(100% - 32px));
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    /* Game Area */
+    .game-area {
+        position: relative;
+        padding-top: 60px;
+        .reset-game {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #27303f;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: var(--primary-color);
+            }
+
+            &:focus-visible {
+                outline: 3px solid var(--primary-color);
+                outline-offset: 3px;
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+                fill: none;
+                stroke: currentColor;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2;
+            }
+        }
+        .inputs{
+            > div {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span {
+                    font-size: 30px;
+                    margin-right: 15px;
+                    font-weight: bold;
+                }
+            }
+            .disabled-inputs {
+                opacity: 0.5;
+                pointer-events: none; 
+            }
+            input {
+                margin: 0 5px;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                font-size: 40px;
+                caret-color: var(--primary-color);
+                background-color: white;
+                border: none;
+                border-bottom: 3px solid #222;
+                &:focus {
+
+                    outline-color: #ccc;
+                }
+                &.yes-in-place {
+                    background-color: #f89e13;
+                    border: #f89e13;
+                    color: white;
+                }
+                &.not-in-place {
+                    background-color: #18ba89;
+                    border: #18ba89;
+                    color: white;}
+                &.no {
+                    background-color: #27303f;
+                    border: #27303f;
+                    color: white;
+                }   
+            }
+        }
+        .control{
+            display: flex;
+            justify-content: center;
+            margin: 30px auto;
+            width: 500px;
+            gap: 10px;
+            .check {
+                background-color: var(--primary-color);
+                flex: 1;
+            }
+            .hints {
+                background-color: #009688;
+                width: fit-content;
+            }
+            button{
+                border: none;
+                font-size: 25px;
+                padding: 15px 20px;
+                border-radius: 6px;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .button-disabled {
+                background-color: black;
+                opacity: 0.4;
+                cursor: no-drop;
+            }
+        }
+    }
+    
+    /* Key Colors */
+    .key-colors {
+        .key-color{
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 10px;
+
+            .key {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 10px;
+                
+                &.in-place {
+                    background-color: #f89e13;
+                }
+                &.not-in-place {
+                    background-color: #18ba89;
+                }
+                &.no {
+                    background-color: #27303f;
+                }
+            }
+            .key-text {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            }
+        }
+}
+
+
+.message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    span {
+        font-weight: bold;
+        display: block;
+        font-size: 50px;
+        color: var(--primary-color);
+        text-transform: capitalize;
+        margin-top: 10px;
+    }
+    p {
+        margin-top: 15px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 5px 0;
+    font-weight: 800;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    margin-top: 50px;
+    background-color: #333;
+    color: #eee;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 900px) {
+    .guess-game {
+        width: min(100% - 32px, 680px);
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+
+        .game-area,
+        .key-colors {
+            width: 100%;
+        }
+
+        .game-area .control {
+            width: min(100%, 500px);
+        }
+    }
+
+    .key-colors .key-color {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        padding: 12px;
+        margin-bottom: 24px;
+        font-size: 1.6rem;
+    }
+
+    .guess-game {
+        width: calc(100% - 24px);
+        margin: 12px auto 24px;
+
+        .game-area .inputs > div {
+            margin-bottom: 14px;
+
+            span {
+                margin-right: 8px;
+                font-size: 22px;
+            }
+        }
+
+        .game-area .inputs input {
+            width: clamp(32px, 8.5vw, 46px);
+            height: clamp(38px, 10vw, 46px);
+            margin: 0 2px;
+            font-size: clamp(24px, 7vw, 32px);
+        }
+
+        .game-area .control {
+            margin: 22px auto;
+            gap: 8px;
+
+            button {
+                padding: 12px 10px;
+                font-size: clamp(16px, 4.5vw, 20px);
+            }
+        }
+    }
+
+    .key-colors .key-color {
+        padding: 10px;
+
+        .key {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .key-text {
+            font-size: 16px;
+        }
+    }
+
+    .message {
+        font-size: 22px;
+
+        span {
+            font-size: 36px;
+        }
+    }
+
+    footer {
+        position: static;
+        margin-top: 32px;
+        padding: 8px 12px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
